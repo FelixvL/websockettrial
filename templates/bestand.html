@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            socket.on('connect', function() {
+                socket.send('Client is verbonden!');
+            });
+            socket.on('message', function(msg) {
+                document.body.appendChild(document.createElement('div')).innerHTML = msg;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>WebSocket Echo Test</h2>
+</body>
+</html>
